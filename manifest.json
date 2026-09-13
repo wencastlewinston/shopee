@@ -1,9 +1,9 @@
 {
   "short_name": "WenCastle",
-  "name": "WenCastle",
-  "start_url": "camping.html", 
+  "name": "WenCastle 蝦皮分潤專案",
+  "start_url": "shopee.html",
   "display": "standalone",
-  "theme_color": "#2d5a27",
+  "theme_color": "#ee4d2d",
   "background_color": "#f4f7f4",
   "icons": [
     {
@@ -16,7 +16,7 @@
       "src": "https://raw.githubusercontent.com/wencastlewinston/lineage-Simulator/main/1774111559586.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "image/png"
     }
   ]
 }
