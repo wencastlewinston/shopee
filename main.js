@@ -42,7 +42,7 @@ async function fetchCampData() {
 
         rows.slice(1).forEach((row) => {
             const cols = processRow(row);
-            if (cols.length < 6) return;
+            if (cols.length < 7) return;
             const [id, category, title, price, imageUrl, affiliateUrl, tag] = cols;
 
             if (category && category.trim() !== "") {
