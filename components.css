@@ -1,35 +1,202 @@
-.album-icon-btn { font-size: 19px; cursor: pointer; margin-left: 2px; display: flex; align-items: flex-end; }
-.album-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); display: none; z-index: 4000; align-items: center; justify-content: center; backdrop-filter: blur(10px); }
-.album-container { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; }
-.album-control-btn { position: absolute; top: 20px; right: 70px; color: white; font-size: 24px; cursor: pointer; z-index: 4005; background: rgba(255,255,255,0.1); width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
-.album-close-btn { position: absolute; top: 20px; right: 20px; color: white; font-size: 32px; cursor: pointer; z-index: 4001; }
-#mainPhoto { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 4px; }
-.filmstrip-container { height: 100px; width: 100%; background: rgba(0,0,0,0.5); display: flex; align-items: center; padding: 10px 0; }
-.filmstrip { display: flex; gap: 8px; overflow-x: auto; padding: 0 20px; width: 100%; }
-.strip-thumb { width: 60px; height: 60px; object-fit: cover; border-radius: 4px; cursor: pointer; opacity: 0.4; }
-.strip-thumb.active { opacity: 1; border: 2px solid var(--primary-light); }
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 15px;
+    background: #f0f0f0;
+}
 
-.playlist-card { margin: 10px 15px; border-radius: 10px; overflow: hidden; border: 2px solid #43a047; background: #fff; }
-.playlist-header { background: #43a047; color: white; padding: 15px; cursor: pointer; display: flex; justify-content: space-between; font-weight: bold; }
-.playlist-content { padding: 5px 0; background: #fff; }
-.revisit-tag { font-size: 10px; color: var(--primary); font-weight: bold; background: rgba(45, 90, 39, 0.1); padding: 2px 6px; border-radius: 8px; display: inline-flex; align-items: center; gap: 2px; border: 1px solid rgba(45, 90, 39, 0.2); white-space: nowrap; }
+.product-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
 
-.tent-count-tag { margin-top: 2px; display: inline-flex; }
-.tent-count-tag span { font-size: 10px; color: #666; background: #f0f0f0; padding: 1px 6px; border-radius: 4px; font-weight: normal; }
+.product-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
 
-.altitude-row { position: relative; margin-top: 2px; width: 100%; max-width: 120px; height: 14px; background: #f0f0f0; border-radius: 10px; overflow: hidden; display: flex; align-items: center; box-sizing: border-box; }
-.alt-bar-fill { position: absolute; left: 0; top: 0; height: 100%; transition: width 1s ease-out; z-index: 1; border-radius: 10px; }
-.altitude-tag { position: relative; z-index: 2; color: #444; font-size: 10px; font-weight: bold; padding-left: 6px; }
+.product-thumb {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background: #eee;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.product-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.product-tag {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #ee4d2d;
+    color: white;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.product-info {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.product-category {
+    font-size: 12px;
+    color: #888;
+}
+
+.product-title {
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-break: break-all;
+}
+
+.product-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ee4d2d;
+    margin-top: auto;
+}
+
+.product-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #ee4d2d;
+    color: white;
+    text-decoration: none;
+    padding: 8px 0;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 8px;
+    box-sizing: border-box;
+}
+
+.product-btn:hover {
+    opacity: 0.9;
+}
+
+.search-container {
+    padding: 15px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.search-bar-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.search-bar-row input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+}
+
+.search-bar-row input:focus {
+    border-color: #ee4d2d;
+}
+
+.icon-btn {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: #333;
+    flex-shrink: 0;
+}
+
+.icon-btn:hover {
+    background: #f9f9f9;
+}
+
+.fb-ic { color: #1877f2; }
+.yt-ic { color: #ff0000; }
+
+.tool-bar {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    white-space: nowrap;
+}
+
+.tool-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.tag {
+    padding: 4px 12px;
+    background: #f0f0f0;
+    border-radius: 16px;
+    font-size: 13px;
+    cursor: pointer;
+    color: #666;
+    flex-shrink: 0;
+    transition: all 0.2s;
+}
+
+.tag.active {
+    background: #ee4d2d;
+    color: white;
+    font-weight: bold;
+}
+
+.stat-row {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: #666;
+}
 
 @media (min-width: 768px) {
-    .album-control-btn { top: 30px; right: 90px; width: 50px; height: 50px; font-size: 28px; }
-    .album-close-btn { top: 30px; right: 30px; font-size: 38px; }
-    .main-photo-wrapper { padding: 20px; }
-    .filmstrip-container { height: 120px; }
-    .strip-thumb { width: 80px; height: 80px; }
-    .playlist-card { margin: 20px; }
-    .playlist-header { padding: 18px 24px; font-size: 18px; }
-    .playlist-content { padding: 10px 0; }
-    .altitude-row { max-width: 150px; height: 16px; }
-    .altitude-tag { font-size: 11px; }
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 15px;
+        padding: 20px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
 }
